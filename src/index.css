@@ -17,6 +17,12 @@ code {
     monospace;
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 button {
   border: none;
   border-radius: 0;
