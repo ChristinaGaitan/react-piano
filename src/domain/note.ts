@@ -66,3 +66,5 @@ export function generateNotes({
     .fill(0)
     .map((_, index: number) => fromMidi(fromNote + index));
 }
+
+export const notes = generateNotes();
