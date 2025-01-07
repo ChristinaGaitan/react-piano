@@ -20,7 +20,7 @@ type ProviderState = {
   current: Optional<InstrumentName>;
 };
 
-export function withInstrument<TProps extends InjectedProps>(
+export function withInstrument<TProps extends InjectedProps = InjectedProps>(
   WrappedComponent: ComponentType<TProps>,
 ) {
   const displayName =
@@ -81,6 +81,25 @@ export function withInstrument<TProps extends InjectedProps>(
     public componentDidMount(): void {
       const { instrument } = this.props;
       this.load(instrument);
+    }
+
+    public shouldComponentUpdate(
+      nextProps: Readonly<ProviderProps>,
+      nextState: Readonly<ProviderState>,
+      nextContext: any,
+    ): boolean {
+      return this.state.current !== nextProps.instrument;
+    }
+
+    public componentDidUpdate(
+      prevProps: Readonly<ProviderProps>,
+      prevState: Readonly<ProviderState>,
+      snapshot?: any,
+    ): void {
+      const { instrument } = this.props;
+      if (instrument && instrument !== prevProps.instrument) {
+        this.load(instrument);
+      }
     }
 
     public render() {
