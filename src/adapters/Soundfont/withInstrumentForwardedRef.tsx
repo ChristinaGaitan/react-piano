@@ -1,13 +1,7 @@
 import Soundfont, { InstrumentName, Player } from "soundfont-player";
 import { MidiValue } from "../../domain/note";
 import { Optional } from "../../domain/types";
-import {
-  Component,
-  ComponentClass,
-  ComponentType,
-  forwardRef,
-  Ref,
-} from "react";
+import { Component, ComponentClass, forwardRef, Ref } from "react";
 import { AudioNodesRegistry, DEFAULT_INSTRUMENT } from "../../domain/sound";
 
 type InjectedProps = {
